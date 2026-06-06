@@ -4,66 +4,38 @@
 
 This repository provides the official implementation of **pFedSAM**, a novel dual-personalized federated learning framework for multi-site ADHD classification using multimodal neuroimaging data.
 
-The proposed framework jointly addresses:
-
-- **Cross-site data heterogeneity**
-- **Multimodal discrepancy between fMRI and sMRI**
-- **Personalization in federated medical imaging**
-
-by integrating:
-
-- **Modality-Guided Domain Adaptation**
-- **Source-Anchored Alignment Mechanism**
-- **Dual-Level Personalized Federated Learning**
-- **Neural Architecture Search (NAS)**
-
-The framework leverages the structural stability of sMRI to guide the alignment of more heterogeneous fMRI representations, enabling robust cross-site multimodal learning under privacy-preserving federated settings.
-
 ------
 
-## Key Features
+## Project Structure
 
-### 1. Modality-Guided Alignment
+pFedSAM/
 
-- Uses stable sMRI representations as structural anchors
-- Guides fMRI feature alignment across modalities and sites
-- Reduces both modality and domain discrepancies
+├── data/                     # Dataset storage and preprocessing
 
-### 2. Source-Anchored Mechanism
+├── federated/                # Federated learning workflow
 
-- Introduces EMA-based global prototypes
-- Provides stable cross-round feature alignment
-- Improves federated optimization stability
+│   ├── client.py             # Client-side local training and updates
 
-### 3. Dual Personalization
+│   └── server.py             # Server-side aggregation and coordination
 
-- Parameter-Level Personalization
-  - Wasserstein-distance-based adaptive aggregation
-- Architecture-Level Personalization
-  - Client-specific NAS optimization using Gumbel-Softmax
+├── models/                   # Neural network architectures
 
-### 4. Multi-Level Domain Adaptation
+│   ├── base_models.py        # Base model definitions
 
-The framework performs alignment at:
+│   ├── client_model.py       # Personalized client models
 
-- Sample level
-- Distribution level
-- Domain level
-- Global level
+│   └── nas_modules.py        # Neural architecture search related modules
 
-------
+├── utils/                    # Utility functions
 
-## Framework Architecture
+│   ├── helpers.py            # Common helper functions
 
-The proposed pFedSAM framework contains:
+│   └── metrics.py            # Evaluation metrics
 
-- Federated multimodal learning pipeline
-- Modality-guided feature alignment
-- Source-domain anchored consistency learning
-- Personalized aggregation
-- Differentiable NAS architecture search
+├── config.py                 # Experimental configurations
 
-------
+└── main.py                   # Entry point for training and evaluation
+
 
 ## Dataset
 
